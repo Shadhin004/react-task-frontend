@@ -1,12 +1,11 @@
-import React,{useContext, useEffect, useState} from 'react'
-import { Navigate } from 'react-router-dom'
+import React,{useContext, useState} from 'react'
 import '../assets/css/SignUp.css'
 import { UserContext } from '../contexts/UserContext'
 
 function SignIn() {
   const [loginInfo, setLoginInfo] = useState({})
 
-  const {loginFunction, successMessage, isLoggedin} = useContext(UserContext)
+  const {loginFunction, successMessage} = useContext(UserContext)
   const handleLoginData = (name) =>(event)=>{
     setLoginInfo({...loginInfo, [name] : event.target.value})
   }
@@ -14,11 +13,6 @@ function SignIn() {
   const loginUser = ()=>{
     loginFunction(loginInfo)
   }
-  // useEffect(()=>{
-  //   if(isLoggedin){
-  //     <Navigate replace to={'/'} />
-  //   }
-  // }, [isLoggedin])
 
   return (
     <div>

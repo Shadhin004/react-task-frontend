@@ -8,7 +8,6 @@ import UserContextProvider from './contexts/UserContext';
 function App() {
   return (
     <UserContextProvider>
-      {/* <Header /> */}
       <Routes>
         <Route path='/' exact element={<HomePage />} />
         <Route path='/signup' exact element={<SignUp />} />

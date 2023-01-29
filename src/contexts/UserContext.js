@@ -74,7 +74,7 @@ const UserContextProvider = (props) => {
 
   return (
     <UserContext.Provider value={{ 
-        userData, setUserData,
+        userData, setUserData,logout,
         loginFunction, successMessage, isLoggedin
       }}>
       {props.children}

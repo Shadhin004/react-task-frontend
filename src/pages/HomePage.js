@@ -2,11 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../assets/css/HomePage.css'
 import Cookies from 'js-cookie'
 import { UserContext } from '../contexts/UserContext'
-import { Navigate } from 'react-router-dom'
 
 function HomePage() {
   const [selectors, setSelectors] =useState([])
-  const {isLoggedIn, userData} = useContext(UserContext)
+  const { userData} = useContext(UserContext)
   
   const [submitData, setSubmitData] = useState(userData)
 
@@ -17,6 +16,7 @@ useEffect(() => {
   if (loggedInUser) {
   setauthenticated(loggedInUser);
   }
+  console.log(authenticated)
 }, [])
 
   const handleChange = (name) =>(event)=>{
