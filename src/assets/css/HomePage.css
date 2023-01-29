@@ -1,0 +1,70 @@
+label{
+    color: #212529;
+}
+
+.homePage-InputFields{
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 10px 0px #e2e2e2;
+}
+
+.submit-button{
+    background-color: #212529;
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.details{
+    text-align: left;
+    padding: 30px;
+}
+
+.header {
+    z-index: 990;
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    text-align: center;
+    color: #fff;
+    background-image: url(../images/header.jpg);
+    background-size: cover;
+    background-position: center;
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transition-timing-function: linear;
+            transition-timing-function: linear;
+  }
+
+.header .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: -webkit-radial-gradient(48% 42%, 140% 110%, rgba(33, 37, 41, 0.5), rgba(33, 37, 41, 0.6), rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.8), rgba(33, 37, 41, 0.93), #212529 55%, #212529 200%);
+    background-image: radial-gradient(140% 110% at 48% 42%, rgba(33, 37, 41, 0.5), rgba(33, 37, 41, 0.6), rgba(33, 37, 41, 0.7), rgba(33, 37, 41, 0.8), rgba(33, 37, 41, 0.93), #212529 55%, #212529 200%);
+  }
+
+  .header .header-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+  }
+  
+
+  .form-container{
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: left;
+  }
+
+  .term{
+    color: black !important;
+    text-align: left;
+  }

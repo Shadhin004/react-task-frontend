@@ -1,91 +1,67 @@
-import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import React,{useContext, useEffect, useState} from 'react'
+import { Navigate } from 'react-router-dom'
+import '../assets/css/SignUp.css'
+import { UserContext } from '../contexts/UserContext'
 
-export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+function SignIn() {
+  const [loginInfo, setLoginInfo] = useState({})
+
+  const {loginFunction, successMessage, isLoggedin} = useContext(UserContext)
+  const handleLoginData = (name) =>(event)=>{
+    setLoginInfo({...loginInfo, [name] : event.target.value})
+  }
+
+  const loginUser = ()=>{
+    loginFunction(loginInfo)
+  }
+  // useEffect(()=>{
+  //   if(isLoggedin){
+  //     <Navigate replace to={'/'} />
+  //   }
+  // }, [isLoggedin])
 
   return (
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-      </Container>
-  );
+    <div>
+      <section class="vh-100 bg-image">
+        {console.log(successMessage)}
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+          <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                <div class="card" style={{borderRadius: "15px"}}>
+                  <div class="card-body p-5">
+                    <h2 class="text-uppercase text-center mb-5">Login</h2>
+
+                    <form onSubmit={(e) =>[e.preventDefault(), loginUser()]}>
+                      {/* <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example1cg">Your Name</label>
+                        <input required type="text" id="form3Example1cg" onChange={handleLoginData('name')} class="form-control form-control-lg" />
+                      </div> */}
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3cg">Your Email</label>
+                        <input required type="email" id="form3Example3cg" onChange={handleLoginData('email')} class="form-control form-control-lg" />
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example4cg">Password</label>
+                        <input required type="password" id="form3Example4cg" onChange={handleLoginData('password')} minLength={8} class="form-control form-control-lg" />
+                      </div>
+
+                      <div class="d-flex justify-content-center">
+                        <button type="submit"
+                          class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Login</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
 }
+
+export default SignIn
